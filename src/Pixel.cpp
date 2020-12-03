@@ -1,5 +1,6 @@
 #include "Pixel.h"
 #include <ostream>
+#include <iostream>
 //========================================================================
 Pixel::Pixel(unsigned char pixel = WHITE) {}
 //========================================================================
@@ -67,4 +68,13 @@ std::ostream& operator<<(std::ostream& os, const Pixel& p)
 {
 	os << p.getColor();
 	return os;
+}
+//========================================================================
+std::ostream& operator<<(std::ostream& os, const Pixel& p) {
+	std::cout << p.getColor();
+	return os;
+}
+//========================================================================
+void Pixel::setColor(unsigned char color) {
+	this->m_color = color;
 }

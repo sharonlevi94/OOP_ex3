@@ -8,7 +8,7 @@ public:
 
 	unsigned int getHight()const;
 	unsigned int getWidth()const;
-	const Pixel& operator()(unsigned int x, unsigned int y);
+    Pixel& operator()(unsigned int x, unsigned int y);
 
 private:
 	Pixel** m_imageData;

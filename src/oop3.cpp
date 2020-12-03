@@ -2,11 +2,12 @@
 //
 
 #include "oop3.h"
-
+#include "Image.h"
+#include <cstdlib>
 using namespace std;
 
 int main()
 {
-	cout << "Hello CMake." << endl;
-	return 0;
+	Image A;
+	return EXIT_SUCCESS;
 }

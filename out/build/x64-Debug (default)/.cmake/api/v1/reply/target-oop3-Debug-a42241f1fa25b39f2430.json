@@ -63,7 +63,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -MDd  "
+					"fragment" : "/DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd"
 				},
 				{
 					"backtrace" : 2,
@@ -89,7 +89,7 @@
 			[
 				{
 					"backtrace" : 4,
-					"path" : "D:/Projects/Visual Studio Projects/oop_ex3/include"
+					"path" : "C:/Users/sharonlevi/source/repos/oop3/include"
 				}
 			],
 			"language" : "CXX",
@@ -108,7 +108,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -MDd",
+				"fragment" : "/DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd",
 				"role" : "flags"
 			},
 			{
