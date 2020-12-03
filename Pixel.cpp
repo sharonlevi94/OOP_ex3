@@ -4,7 +4,7 @@ Pixel::Pixel(unsigned char pixel = ' ') {}
 //========================================================================
 Pixel::~Pixel() {}
 //========================================================================
-unsigned char Pixel::getColor()const { return this->color; }
+unsigned char Pixel::getColor()const { return this->m_color; }
 //========================================================================
 bool operator==(const Pixel& p1, const Pixel& p2) {
 	return (p1.getColor() == p2.getColor());

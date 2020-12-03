@@ -18,7 +18,7 @@ public:
 	Pixel operator&=(const Pixel& p);
 
 private:
-	unsigned char color;
+	unsigned char m_color;
 };
 
 bool operator==(const Pixel& p1, const Pixel& p2);
