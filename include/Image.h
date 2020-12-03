@@ -1,7 +1,8 @@
 #pragma once
 #include "ImageDataStracture.h"
 #include <ostream>
-
+#include "Pixel.h"
+//========================================================================
 class Image
 {
 public:
@@ -17,13 +18,13 @@ public:
 	void operator=(const Image& other); //like copy constructor but diff
 	void operator|=(const Image& other);
 	void operator&=(const Image& other);
-	Image& operator()(unsigned int x, unsigned int y);
-	const Image& operator()(unsigned int x, unsigned int y)const;
+	Pixel& operator()(unsigned int x, unsigned int y);
+	const Pixel& operator()(unsigned int x, unsigned int y)const;
 
 private:
 	ImageDataStracture m_imageData;
 };
-
+//========================================================================
 std::ostream& operator<<(std::ostream& os, const Image& A);
 void operator+=(Image& A,const Image& B);
 bool operator==(const Image& A,const Image& B);
