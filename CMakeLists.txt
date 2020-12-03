@@ -1,11 +1,16 @@
-﻿# CMakeList.txt : CMake project for oop3, include source and define
-# project specific logic here.
-#
-cmake_minimum_required (VERSION 3.8)
+﻿# TODO: Add tests and install targets if needed.
+cmake_minimum_required (VERSION 3.15)
 
 project ("oop3")
 
-# Add source to this project's executable.
-add_executable (oop3 "oop3.cpp" "oop3.h" "Image.cpp" "Image.h" "Pixel.h" "Pixel.cpp" "Utilities.cpp" "Utilities.h" "ImageDataStracture.h")
+set (CMAKE_CXX_STANDARD 17)
+set (CMAKE_CXX_STANDARD_REQUIRED ON)
+set (CMAKE_CXX_EXTENSIONS OFF)
+if (MSVC)
+    add_compile_options (/W4 /permissive- /Zc:externConstexpr /Zc:inline)
+endif ()
 
-# TODO: Add tests and install targets if needed.
+add_executable(oop3)
+
+add_subdirectory (include)
+add_subdirectory (src)

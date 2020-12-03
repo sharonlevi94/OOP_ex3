@@ -13,11 +13,15 @@
 	{
 		"commands" : 
 		[
-			"add_executable"
+			"add_executable",
+			"add_compile_options",
+			"target_include_directories",
+			"add_subdirectory"
 		],
 		"files" : 
 		[
-			"CMakeLists.txt"
+			"CMakeLists.txt",
+			"include/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -27,7 +31,28 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 9,
+				"line" : 13,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 10,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 1,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 16,
 				"parent" : 0
 			}
 		]
@@ -38,16 +63,42 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -MDd  "
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "/W4"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "/permissive-"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "/Zc:externConstexpr"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "/Zc:inline"
+				},
+				{
+					"fragment" : "-std:c++17"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "D:/Projects/Visual Studio Projects/oop_ex3/include"
 				}
 			],
 			"language" : "CXX",
 			"sourceIndexes" : 
 			[
 				0,
+				1,
 				2,
-				5,
-				6
+				3
 			]
 		}
 	],
@@ -57,7 +108,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -MDd",
 				"role" : "flags"
 			},
 			{
@@ -85,73 +136,37 @@
 			"sourceIndexes" : 
 			[
 				0,
-				2,
-				5,
-				6
-			]
-		},
-		{
-			"name" : "Header Files",
-			"sourceIndexes" : 
-			[
 				1,
-				3,
-				4,
-				7,
-				8
+				2,
+				3
 			]
 		}
 	],
 	"sources" : 
 	[
 		{
-			"backtrace" : 1,
+			"backtrace" : 5,
 			"compileGroupIndex" : 0,
-			"path" : "oop3.cpp",
+			"path" : "src/Image.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 1,
-			"path" : "oop3.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
+			"backtrace" : 5,
 			"compileGroupIndex" : 0,
-			"path" : "Image.cpp",
+			"path" : "src/oop3.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 1,
-			"path" : "Image.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "Pixel.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
+			"backtrace" : 5,
 			"compileGroupIndex" : 0,
-			"path" : "Pixel.cpp",
+			"path" : "src/Pixel.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 1,
+			"backtrace" : 5,
 			"compileGroupIndex" : 0,
-			"path" : "Utilities.cpp",
+			"path" : "src/Utilities.cpp",
 			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "Utilities.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "ImageDataStracture.h",
-			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"
