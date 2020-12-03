@@ -2,7 +2,7 @@
 #include <ostream>
 #include <iostream>
 //========================================================================
-Pixel::Pixel(unsigned char pixel = WHITE) {}
+Pixel::Pixel(unsigned char pixel=' ') : m_color(pixel) {}
 //========================================================================
 Pixel::~Pixel() {}
 //========================================================================
@@ -75,6 +75,6 @@ std::ostream& operator<<(std::ostream& os, const Pixel& p) {
 	return os;
 }
 //========================================================================
-void Pixel::setColor(unsigned char color) {
+Pixel& Pixel::setColor(unsigned char color) {
 	this->m_color = color;
 }
