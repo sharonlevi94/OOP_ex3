@@ -1,9 +1,12 @@
+//---------------------------- include section -------------------------------
 #include "ImageDataStracture.h"
 #include "Pixel.h"
 #include "Utilities.h"
 #include <new>
+//------------------- constractors and destractors section -------------------
 
-ImageDataStracture::ImageDataStracture(unsigned int height, unsigned int width) {
+ImageDataStracture::ImageDataStracture(unsigned int height, 
+	unsigned int width) {
 	Pixel** newArr = nullptr;
 	
 	newArr = new(std::nothrow) Pixel * [height];
