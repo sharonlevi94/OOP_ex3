@@ -75,6 +75,14 @@ build CMakeFiles\oop3.dir\src\Utilities.cpp.obj: CXX_COMPILER__oop3_Debug ..\..\
   TARGET_COMPILE_PDB = CMakeFiles\oop3.dir\
   TARGET_PDB = oop3.pdb
 
+build CMakeFiles\oop3.dir\src\ImageDataStracture.cpp.obj: CXX_COMPILER__oop3_Debug ..\..\..\src\ImageDataStracture.cpp || cmake_object_order_depends_target_oop3_Debug
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -MDd   /W4 /permissive- /Zc:externConstexpr /Zc:inline -std:c++17
+  INCLUDES = -I..\..\..\include
+  OBJECT_DIR = CMakeFiles\oop3.dir
+  OBJECT_FILE_DIR = CMakeFiles\oop3.dir\src
+  TARGET_COMPILE_PDB = CMakeFiles\oop3.dir\
+  TARGET_PDB = oop3.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target oop3

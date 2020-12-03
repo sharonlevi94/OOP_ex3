@@ -63,7 +63,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -MDd  "
 				},
 				{
 					"backtrace" : 2,
@@ -89,7 +89,7 @@
 			[
 				{
 					"backtrace" : 4,
-					"path" : "C:/Users/sharonlevi/source/repos/oop3/include"
+					"path" : "D:/Projects/Visual Studio Projects/oop_ex3/include"
 				}
 			],
 			"language" : "CXX",
@@ -98,7 +98,8 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4
 			]
 		}
 	],
@@ -108,7 +109,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -MDd",
 				"role" : "flags"
 			},
 			{
@@ -138,7 +139,8 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4
 			]
 		}
 	],
@@ -166,6 +168,12 @@
 			"backtrace" : 5,
 			"compileGroupIndex" : 0,
 			"path" : "src/Utilities.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/ImageDataStracture.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
