@@ -1,6 +1,7 @@
 #include "Pixel.h"
+#include <ostream>
 //========================================================================
-Pixel::Pixel(unsigned char pixel = ' ') {}
+Pixel::Pixel(unsigned char pixel = WHITE) {}
 //========================================================================
 Pixel::~Pixel() {}
 //========================================================================
@@ -60,4 +61,10 @@ Pixel Pixel::getDarker(const Pixel& p)const {
 			return *this;
 	default: return p;
 	}
+}
+//========================================================================
+std::ostream& operator<<(std::ostream& os, const Pixel& p)
+{
+	os << p.getColor();
+	return os;
 }

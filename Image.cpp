@@ -8,7 +8,8 @@ Image::Image(const Image& other) {} //copy constructor
 
 Image::~Image()
 {
+	delete this->m_imageData;
 }
 
-unsigned int Image::GetHight()const { return this->m_height; }
-unsigned int Image::GetWidth()const { return this->m_width;  }
+unsigned int Image::getHight()const { return this->m_imageData.getHight(); }
+unsigned int Image::getWidth()const { return this->m_imageData.getWidth(); }

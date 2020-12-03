@@ -20,7 +20,7 @@ public:
 private:
 	unsigned char m_color;
 };
-
+std::ostream& operator<<(std::ostream& os, const Pixel& p);
 bool operator==(const Pixel& p1, const Pixel& p2);
 bool operator!=(const Pixel& p1, const Pixel& p2);
 Pixel operator|(const Pixel& p1, const Pixel& p2);

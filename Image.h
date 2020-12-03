@@ -1,5 +1,7 @@
 #pragma once
 #include "ImageDataStracture.h"
+#include <ostream>
+
 class Image
 {
 public:
@@ -9,22 +11,23 @@ public:
 	Image(const Image& other); //copy constructor
 	~Image();
 
-	unsigned int GetHight()const;
-	unsigned int GetWidth()const;
+	unsigned int getHight()const;
+	unsigned int getWidth()const;
 
-	bool operator==(const Image& other);
-	bool operator!=(const Image& other);
 	void operator=(const Image& other); //like copy constructor but diff
-	void operator+=(const Image& other);
 	void operator|=(const Image& other);
 	void operator&=(const Image& other);
 	Image& operator()(unsigned int x, unsigned int y);
 	const Image& operator()(unsigned int x, unsigned int y)const;
 
 private:
-	unsigned int m_height = 0, m_width = 0;
+	ImageDataStracture m_imageData;
 };
 
+std::ostream& operator<<(std::ostream& os, const Image& A);
+void operator+=(Image& A,const Image& B);
+bool operator==(const Image& A,const Image& B);
+bool operator!=(const Image& A,const Image& B);
 Image& operator+(const Image& A, const Image& B);
 Image& operator|(const Image& A, const Image& B);
 Image& operator&(const Image& A, const Image& B);
