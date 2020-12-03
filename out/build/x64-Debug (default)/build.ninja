@@ -75,6 +75,14 @@ build CMakeFiles\oop3.dir\src\Utilities.cpp.obj: CXX_COMPILER__oop3_Debug ..\..\
   TARGET_COMPILE_PDB = CMakeFiles\oop3.dir\
   TARGET_PDB = oop3.pdb
 
+build CMakeFiles\oop3.dir\src\ImageDataStracture.cpp.obj: CXX_COMPILER__oop3_Debug ..\..\..\src\ImageDataStracture.cpp || cmake_object_order_depends_target_oop3_Debug
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -MDd   /W4 /permissive- /Zc:externConstexpr /Zc:inline -std:c++17
+  INCLUDES = -I..\..\..\include
+  OBJECT_DIR = CMakeFiles\oop3.dir
+  OBJECT_FILE_DIR = CMakeFiles\oop3.dir\src
+  TARGET_COMPILE_PDB = CMakeFiles\oop3.dir\
+  TARGET_PDB = oop3.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target oop3
@@ -83,7 +91,7 @@ build CMakeFiles\oop3.dir\src\Utilities.cpp.obj: CXX_COMPILER__oop3_Debug ..\..\
 #############################################
 # Link the executable oop3.exe
 
-build oop3.exe: CXX_EXECUTABLE_LINKER__oop3_Debug CMakeFiles\oop3.dir\src\Image.cpp.obj CMakeFiles\oop3.dir\src\oop3.cpp.obj CMakeFiles\oop3.dir\src\Pixel.cpp.obj CMakeFiles\oop3.dir\src\Utilities.cpp.obj
+build oop3.exe: CXX_EXECUTABLE_LINKER__oop3_Debug CMakeFiles\oop3.dir\src\Image.cpp.obj CMakeFiles\oop3.dir\src\oop3.cpp.obj CMakeFiles\oop3.dir\src\Pixel.cpp.obj CMakeFiles\oop3.dir\src\Utilities.cpp.obj CMakeFiles\oop3.dir\src\ImageDataStracture.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

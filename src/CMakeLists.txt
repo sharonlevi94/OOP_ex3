@@ -2,4 +2,5 @@
 	                           "oop3.cpp"
 							   "Pixel.cpp"
 							   "Utilities.cpp"
+							   "ImageDataStracture.cpp"
 							)

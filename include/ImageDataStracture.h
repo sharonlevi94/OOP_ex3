@@ -3,7 +3,7 @@
 class ImageDataStracture
 {
 public:
-	ImageDataStracture(unsigned int height=0,const unsigned int width=0 );
+	ImageDataStracture(unsigned int height=0, unsigned int width=0 );
 	~ImageDataStracture();
 
 	unsigned int getHight()const;
