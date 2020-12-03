@@ -1,0 +1,63 @@
+#include "Pixel.h"
+//========================================================================
+Pixel::Pixel(unsigned char pixel = ' ') {}
+//========================================================================
+Pixel::~Pixel() {}
+//========================================================================
+unsigned char Pixel::getColor()const { return this->color; }
+//========================================================================
+bool operator==(const Pixel& p1, const Pixel& p2) {
+	return (p1.getColor() == p2.getColor());
+}
+//========================================================================
+bool operator!=(const Pixel& p1, const Pixel& p2) {
+	!(p1 == p2);
+}
+//========================================================================
+Pixel operator|(const Pixel& p1, const Pixel& p2){
+	if (p1 == p2)
+		return p1;
+	else 
+		return p1.getDarker(p2);
+}
+//========================================================================
+Pixel Pixel::operator|=(const Pixel& p) {
+	return *this = *this | p;
+}
+//========================================================================
+Pixel operator&(const Pixel& p1, const Pixel& p2) {
+	if (p1 == p2)
+		return p1;
+	else
+		return p1.getLighter(p2);
+}
+//========================================================================
+Pixel Pixel::operator&=(const Pixel& p) {
+	return *this = *this & p;
+}
+//========================================================================
+Pixel Pixel::getLighter(const Pixel& p)const {
+	switch (this->getColor()) {
+	case WHITE:
+		return *this;
+	case GRAY:
+		if (p.getColor() == WHITE)
+			return p;
+		else 
+			return *this;
+	default: return p;
+	}
+}
+//========================================================================
+Pixel Pixel::getDarker(const Pixel& p)const {
+	switch (this->getColor()) {
+	case BLACK:
+		return *this;
+	case GRAY:
+		if (p.getColor() == BLACK)
+			return p;
+		else 
+			return *this;
+	default: return p;
+	}
+}
