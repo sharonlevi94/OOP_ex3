@@ -7,20 +7,19 @@ const unsigned char WHITE = (unsigned char)' ';
 class Pixel
 {
 public:
-	Pixel(unsigned char pixel=' ');
+	Pixel(unsigned char pixel);
 	~Pixel();
 
 	unsigned char getColor()const;
-	Pixel getDarker(const Pixel&)const;
-	Pixel getLighter(const Pixel& p)const;
-
-	void setColor(unsigned char color);
+	Pixel& setColor(unsigned char color);
 
 	Pixel operator|=(const Pixel& p);
 	Pixel operator&=(const Pixel& p);
+	Pixel getDarker(const Pixel&)const;
+	Pixel getLighter(const Pixel& p)const;
 
 private:
-	unsigned char m_color;
+	unsigned char m_color=WHITE;
 };
 //========================================================================
 std::ostream& operator<<(std::ostream& os, const Pixel& p);

@@ -9,7 +9,7 @@ public:
 	Image();
 	Image(int height, int width);
 	Image(int height, int width, unsigned char pixel);
-	Image(const Image& other); //copy constructor
+	Image(const Image& other); //copy constructor,call to operator =
 	~Image();
 
 	unsigned int getHight()const;
