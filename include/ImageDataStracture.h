@@ -8,8 +8,8 @@ public:
 
 	unsigned int getHight()const;
 	unsigned int getWidth()const;
- Pixel& operator()(unsigned int x, unsigned int y);
-const Pixel& Image::operator()(unsigned int x, unsigned int y)const;
+	Pixel& operator()(unsigned int x, unsigned int y);
+	const Pixel& operator()(unsigned int x, unsigned int y)const;
 	
 
 private:
