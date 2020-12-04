@@ -23,10 +23,7 @@ ImageDataStracture::ImageDataStracture(unsigned int height,
 	}
 }
 ImageDataStracture::~ImageDataStracture() {
-	for (unsigned int i = 0; i < this->m_height; ++i) {
-		delete this->m_imageData[i];
-	}
-	delete this->m_imageData;
+	delete[] this->m_imageData;
 	this->m_imageData = nullptr;
 }
 //========================================================================
