@@ -14,5 +14,5 @@ public:
 
 private:
 	Pixel** m_imageData;
-	unsigned int m_height = 0, m_width = 0;
+	unsigned int m_height, m_width;
 };

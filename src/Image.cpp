@@ -25,9 +25,11 @@ unsigned int Image::getHight()const { return this->m_imageData.getHight(); }
 unsigned int Image::getWidth()const { return this->m_imageData.getWidth(); }
 //========================================================================
 std::ostream& operator<<(std::ostream& os, const Image& A) {
-	for (unsigned int i = 0; i < A.getHight(); i++)
+	for (unsigned int i = 0; i < A.getHight(); i++) {
 		for (unsigned int j = 0; j < A.getWidth(); j++)
-			std::cout << A(i, j);
+			os << A(i, j);
+		os << std::endl;
+	}
 	return os;
 }
 //========================================================================

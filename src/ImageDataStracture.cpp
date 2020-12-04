@@ -4,7 +4,8 @@
 #include <new>
 //========================================================================
 ImageDataStracture::ImageDataStracture(unsigned int height, 
-	unsigned int width, unsigned char color) {
+	unsigned int width, unsigned char color): m_height(height), m_width(width),
+	m_imageData(nullptr){
 	Pixel** newArr = nullptr;
 	
 	newArr = new(std::nothrow) Pixel*[height];
@@ -17,9 +18,8 @@ ImageDataStracture::ImageDataStracture(unsigned int height,
 		newArr[i] = new(std::nothrow) Pixel[width];
 		if (newArr[i] == nullptr)
 			terminate("Memory allocation error!");
-		for (unsigned int j = 0; j < width; ++j) {
+		for (unsigned int j = 0; j < width; ++j)
 			newArr[i][j] = Pixel(color);
-		}
 	}
 
 	this->m_imageData = newArr;
@@ -29,8 +29,6 @@ ImageDataStracture::~ImageDataStracture() {
 		delete[] this->m_imageData[i];
 	}
 	this->m_imageData = nullptr;
-	this->m_height = m_height;
-	this->m_width = m_width;
 }
 //========================================================================
 unsigned int ImageDataStracture::getHight()const { return this->m_height; }
