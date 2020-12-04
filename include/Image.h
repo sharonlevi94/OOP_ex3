@@ -1,4 +1,5 @@
 #pragma once
+#pragma once
 #include "ImageDataStracture.h"
 #include <ostream>
 #include "Pixel.h"
@@ -26,14 +27,12 @@ private:
 };
 //========================================================================
 std::ostream& operator<<(std::ostream& os, const Image& A);
-void operator+=(Image& A,const Image& B);
-bool operator==(const Image& A,const Image& B);
-bool operator!=(const Image& A,const Image& B);
+void operator+=(Image& A, const Image& B);
+bool operator==(const Image& A, const Image& B);
+bool operator!=(const Image& A, const Image& B);
 Image& operator+(const Image& A, const Image& B);
 Image& operator|(const Image& A, const Image& B);
 Image& operator&(const Image& A, const Image& B);
 Image operator*(const Image& A, unsigned int n);
 Image operator*(unsigned int n, const Image& A);
 Image operator~(const Image& A);
-
-
