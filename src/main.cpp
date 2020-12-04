@@ -5,8 +5,7 @@
 
 int main()
 {
-	Image image = Image(5, 5, WHITE);
+	Image image = Image(5, 5, GRAY);
 	std::cout << image;
-	image.~Image();
 	return EXIT_SUCCESS;
 }

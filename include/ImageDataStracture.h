@@ -7,8 +7,9 @@ public:
 		unsigned char color = WHITE);
 	~ImageDataStracture();
 
-	unsigned int getHight()const;
+	unsigned int getHeight()const;
 	unsigned int getWidth()const;
+	void operator=(const ImageDataStracture& source);
 	Pixel& operator()(unsigned int x, unsigned int y);
 	const Pixel& operator()(unsigned int x, unsigned int y)const;
 

@@ -21,7 +21,7 @@ Image::~Image(){
 	this->m_imageData.~ImageDataStracture();
 }
 //========================================================================
-unsigned int Image::getHight()const { return this->m_imageData.getHight(); }
+unsigned int Image::getHight()const { return this->m_imageData.getHeight(); }
 unsigned int Image::getWidth()const { return this->m_imageData.getWidth(); }
 //========================================================================
 std::ostream& operator<<(std::ostream& os, const Image& A) {
@@ -89,8 +89,8 @@ void Image::operator=(const Image& other) {
 		this->getWidth() == other.getWidth() &&
 		*this != other) {
 		this->~Image(); //realse memory
-		for (int i = 0; i < other.getHight(); i++)
-			for (int j = 0; j < other.getWidth(); j++)
+		for (unsigned int i = 0; i < other.getHight(); i++)
+			for (unsigned int j = 0; j < other.getWidth(); j++)
 				this->m_imageData(i, j) = other(i, j);
 	}
 }
