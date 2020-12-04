@@ -87,21 +87,73 @@ void Image::operator=(const Image& other) {
 }
 //========================================================================
 Image& operator+(const Image& A, const Image& B) {
+	int nHeight = fmax(A.getHight(), B.getHight());
+	int nWidth = A.getWidth() + B.getWidth();
+	Image nImage(nHeight, nWidth);
 
+	for (int i = 0; i < A.getHight(); i++)
+		for (int j = 0; j < A.getWidth(); j++)
+			nImage(i, j) = A(i, j);
+
+	for (int i = 0; i < B.getHight(); i++)
+		for (int j = 0; j < B.getWidth(); j++)
+			nImage(i, j + A.getWidth()) = B(i, j);
+
+	return nImage;
 }
 //========================================================================
 Image& operator|(const Image& A, const Image& B) {
+	int nHeight = fmax(A.getHight(), B.getHight());
+	int nWidth = fmax(A.getWidth() , B.getWidth());
+	Image nImage(nHeight, nWidth);
 
+	for (int i = 0; i < A.getHight(); i++)
+		for (int j = 0; j < A.getWidth(); j++)
+			nImage(i, j) |= A(i, j);
+
+	for (int i = 0; i < B.getHight(); i++)
+		for (int j = 0; j < B.getWidth(); j++)
+			nImage(i, j) |= B(i, j);
+
+	return nImage;
 }
 //========================================================================
 Image& operator&(const Image& A, const Image& B) {
+	int nHeight = fmin(A.getHight(), B.getHight());
+	int nWidth = fmin(A.getWidth(), B.getWidth());
+	Image nImage(nHeight, nWidth);
 
+	for (int i = 0; i < A.getHight(); i++)
+		for (int j = 0; j < A.getWidth(); j++)
+			nImage(i, j) &= A(i, j);
+
+	for (int i = 0; i < B.getHight(); i++)
+		for (int j = 0; j < B.getWidth(); j++)
+			nImage(i, j) &= B(i, j);
+
+	return nImage;
 }
 //========================================================================
 Image operator*(const Image& A, unsigned int n) {
-
+	if (n == 0) {
+		return Image();
+	}
+	Image nImage(A.getHight(), A.getWidth() * n);
+	for (int i = 0; i < n; i++)
+		nImage += A;
+	return nImage;
 }
 //========================================================================
 Image operator*(unsigned int n, const Image& A) {
-
+	if (n == 0) {
+		return Image();
+	}
+	Image nImage(A.getHight(), A.getWidth() * n);
+	for (int i = 0; i < n; i++)
+		nImage += A;
+	return nImage;
+}
+//========================================================================
+void Image::operator*=(unsigned int n) {
+	*this = *this * n;
 }
