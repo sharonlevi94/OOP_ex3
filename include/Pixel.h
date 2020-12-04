@@ -1,4 +1,5 @@
 #pragma once
+#include <iosfwd>
 
 const unsigned char BLACK = (unsigned char)219;
 const unsigned char GRAY = (unsigned char)176;
@@ -7,11 +8,10 @@ const unsigned char WHITE = (unsigned char)' ';
 class Pixel
 {
 public:
-	Pixel(unsigned char pixel);
-	~Pixel();
+	Pixel(unsigned char pixel = WHITE);
 
 	unsigned char getColor()const;
-	Pixel& setColor(unsigned char color);
+	void setColor(unsigned char color);
 
 	Pixel operator|=(const Pixel& p);
 	Pixel operator&=(const Pixel& p);

@@ -1,10 +1,7 @@
 #include "Pixel.h"
 #include <ostream>
-#include <iostream>
 //========================================================================
-Pixel::Pixel(unsigned char pixel=' ') : m_color(pixel) {}
-//========================================================================
-Pixel::~Pixel() {}
+Pixel::Pixel(unsigned char pixel) : m_color(pixel) {}
 //========================================================================
 unsigned char Pixel::getColor()const { return this->m_color; }
 //========================================================================
@@ -13,7 +10,7 @@ bool operator==(const Pixel& p1, const Pixel& p2) {
 }
 //========================================================================
 bool operator!=(const Pixel& p1, const Pixel& p2) {
-	!(p1 == p2);
+	return(!(p1 == p2));
 }
 //========================================================================
 Pixel operator|(const Pixel& p1, const Pixel& p2){
@@ -70,11 +67,6 @@ std::ostream& operator<<(std::ostream& os, const Pixel& p)
 	return os;
 }
 //========================================================================
-std::ostream& operator<<(std::ostream& os, const Pixel& p) {
-	std::cout << p.getColor();
-	return os;
-}
-//========================================================================
-Pixel& Pixel::setColor(unsigned char color) {
+void Pixel::setColor(unsigned char color) {
 	this->m_color = color;
 }

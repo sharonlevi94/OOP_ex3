@@ -6,35 +6,34 @@
 Image::Image() {}
 //========================================================================
 Image::Image(int height, int width){
-	m_imageData(height, width);
+	this->m_imageData = ImageDataStracture(height, width, WHITE);
 }
 //========================================================================
 Image::Image(int height, int width, unsigned char pixel){
-	m_imageData(height, width, pixel);
+	this->m_imageData = ImageDataStracture(height, width, pixel);
 }
 //========================================================================
 Image::Image(const Image& other) {
 	*this = other;
 } //copy constructor
 //========================================================================
-Image::~Image()
-{
-	this->m_imageData.~ImageDataStracture;
+Image::~Image(){
+	this->m_imageData.~ImageDataStracture();
 }
 //========================================================================
 unsigned int Image::getHight()const { return this->m_imageData.getHight(); }
 unsigned int Image::getWidth()const { return this->m_imageData.getWidth(); }
 //========================================================================
 std::ostream& operator<<(std::ostream& os, const Image& A) {
-	for (int i = 0; i < A.getHight(); i++)
-		for (int j; j < A.getWidth(); j++)
+	for (unsigned int i = 0; i < A.getHight(); i++)
+		for (unsigned int j = 0; j < A.getWidth(); j++)
 			std::cout << A(i, j);
 	return os;
 }
 //========================================================================
 bool operator==(const Image& A, const Image& B) {
-	for (int i = 0; i < A.getHight(); i++)
-		for (int j; j < A.getWidth(); j++)
+	for (unsigned int i = 0; i < A.getHight(); i++)
+		for (unsigned int j = 0; j < A.getWidth(); j++)
 			if (A(i, j) != B(i, j))
 				return false;
 	return true;
@@ -46,8 +45,8 @@ bool operator!=(const Image& A, const Image& B) {
 //========================================================================
 Image operator~(const Image& A) {
 	Image newImage(A.getHight(), A.getWidth());
-	for (int i = 0; i < A.getHight(); i++)
-		for (int j; j < A.getWidth(); j++) {
+	for (unsigned int i = 0; i < A.getHight(); i++)
+		for (unsigned int j = 0; j < A.getWidth(); j++) {
 			switch (A(i, j).getColor()) {
 			case BLACK: {
 				newImage(i, j) = WHITE;
@@ -84,52 +83,52 @@ void Image::operator&=(const Image& other) {
 }
 //========================================================================
 void Image::operator=(const Image& other) {
-
+	
 }
 //========================================================================
-Image& operator+(const Image& A, const Image& B) {
-	int nHeight = fmax(A.getHight(), B.getHight());
-	int nWidth = A.getWidth() + B.getWidth();
+Image operator+(const Image& A, const Image& B) {
+	unsigned int nHeight = (unsigned int)fmax(A.getHight(), B.getHight());
+	unsigned int nWidth = A.getWidth() + B.getWidth();
 	Image nImage(nHeight, nWidth);
 
-	for (int i = 0; i < A.getHight(); i++)
-		for (int j = 0; j < A.getWidth(); j++)
+	for (unsigned int i = 0; i < A.getHight(); i++)
+		for (unsigned int j = 0; j < A.getWidth(); j++)
 			nImage(i, j) = A(i, j);
 
-	for (int i = 0; i < B.getHight(); i++)
-		for (int j = 0; j < B.getWidth(); j++)
+	for (unsigned int i = 0; i < B.getHight(); i++)
+		for (unsigned int j = 0; j < B.getWidth(); j++)
 			nImage(i, j + A.getWidth()) = B(i, j);
 
 	return nImage;
 }
 //========================================================================
-Image& operator|(const Image& A, const Image& B) {
-	int nHeight = fmax(A.getHight(), B.getHight());
-	int nWidth = fmax(A.getWidth() , B.getWidth());
+Image operator|(const Image& A, const Image& B) {
+	unsigned int nHeight = (unsigned int)fmax(A.getHight(), B.getHight());
+	unsigned int nWidth = (unsigned int)fmax(A.getWidth() , B.getWidth());
 	Image nImage(nHeight, nWidth);
 
-	for (int i = 0; i < A.getHight(); i++)
-		for (int j = 0; j < A.getWidth(); j++)
+	for (unsigned int i = 0; i < A.getHight(); i++)
+		for (unsigned int j = 0; j < A.getWidth(); j++)
 			nImage(i, j) |= A(i, j);
 
-	for (int i = 0; i < B.getHight(); i++)
-		for (int j = 0; j < B.getWidth(); j++)
+	for (unsigned int i = 0; i < B.getHight(); i++)
+		for (unsigned int j = 0; j < B.getWidth(); j++)
 			nImage(i, j) |= B(i, j);
 
 	return nImage;
 }
 //========================================================================
-Image& operator&(const Image& A, const Image& B) {
-	int nHeight = fmin(A.getHight(), B.getHight());
-	int nWidth = fmin(A.getWidth(), B.getWidth());
+Image operator&(const Image& A, const Image& B) {
+	unsigned int nHeight = (unsigned int)fmin(A.getHight(), B.getHight());
+	unsigned int nWidth = (unsigned int)fmin(A.getWidth(), B.getWidth());
 	Image nImage(nHeight, nWidth);
 
-	for (int i = 0; i < A.getHight(); i++)
-		for (int j = 0; j < A.getWidth(); j++)
+	for (unsigned int i = 0; i < A.getHight(); i++)
+		for (unsigned int j = 0; j < A.getWidth(); j++)
 			nImage(i, j) &= A(i, j);
 
-	for (int i = 0; i < B.getHight(); i++)
-		for (int j = 0; j < B.getWidth(); j++)
+	for (unsigned int i = 0; i < B.getHight(); i++)
+		for (unsigned int j = 0; j < B.getWidth(); j++)
 			nImage(i, j) &= B(i, j);
 
 	return nImage;
@@ -140,7 +139,7 @@ Image operator*(const Image& A, unsigned int n) {
 		return Image();
 	}
 	Image nImage(A.getHight(), A.getWidth() * n);
-	for (int i = 0; i < n; i++)
+	for (unsigned int i = 0; i < n; i++)
 		nImage += A;
 	return nImage;
 }
@@ -150,11 +149,11 @@ Image operator*(unsigned int n, const Image& A) {
 		return Image();
 	}
 	Image nImage(A.getHight(), A.getWidth() * n);
-	for (int i = 0; i < n; i++)
+	for (unsigned int i = 0; i < n; i++)
 		nImage += A;
 	return nImage;
 }
 //========================================================================
-void Image::operator*=(unsigned int n) {
-	*this = *this * n;
+void operator*=(Image& A, unsigned int n) {
+	A = A * n;
 }

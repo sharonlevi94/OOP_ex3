@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "D:/Projects/Visual Studio Projects/oop_ex3/out/build/x64-Debug/CMakeFiles/oop3.dir/embed.manifest"

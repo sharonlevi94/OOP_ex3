@@ -3,25 +3,29 @@
 #include "Utilities.h"
 #include <new>
 //========================================================================
-ImageDataStracture::ImageDataStracture(unsigned int height, unsigned int width) {
+ImageDataStracture::ImageDataStracture(unsigned int height, 
+	unsigned int width, unsigned char color) {
 	Pixel** newArr = nullptr;
 	
-	newArr = new(std::nothrow) Pixel * [height];
+	newArr = new(std::nothrow) Pixel*[height];
 	if (newArr == nullptr)
 		terminate("Memory allocation error!");
 	
-	for (int i = 0; i < height; ++i) {
+	for (unsigned int i = 0; i < height; ++i) {
 		newArr[i] = nullptr;
 
 		newArr[i] = new(std::nothrow) Pixel[width];
-		if (newArr == nullptr)
+		if (newArr[i] == nullptr)
 			terminate("Memory allocation error!");
+		for (unsigned int j = 0; j < width; ++j) {
+			newArr[i][j] = Pixel(color);
+		}
 	}
 
 	this->m_imageData = newArr;
 }
 ImageDataStracture::~ImageDataStracture() {
-	for (int i = 0; i < this->m_height; ++i) {
+	for (unsigned int i = 0; i < this->m_height; ++i) {
 		delete[] this->m_imageData[i];
 	}
 	this->m_imageData = nullptr;
