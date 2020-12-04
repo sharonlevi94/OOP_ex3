@@ -1,12 +1,9 @@
-//---------------------------- include section -------------------------------
 #include "ImageDataStracture.h"
 #include "Pixel.h"
 #include "Utilities.h"
 #include <new>
-//------------------- constractors and destractors section -------------------
-
-ImageDataStracture::ImageDataStracture(unsigned int height, 
-	unsigned int width) {
+//========================================================================
+ImageDataStracture::ImageDataStracture(unsigned int height, unsigned int width) {
 	Pixel** newArr = nullptr;
 	
 	newArr = new(std::nothrow) Pixel * [height];
@@ -31,10 +28,17 @@ ImageDataStracture::~ImageDataStracture() {
 	this->m_height = m_height;
 	this->m_width = m_width;
 }
-
+//========================================================================
 unsigned int ImageDataStracture::getHight()const { return this->m_height; }
 unsigned int ImageDataStracture::getWidth()const { return this->m_width; }
-const Pixel& ImageDataStracture::operator()(unsigned int x, unsigned int y) {
+//========================================================================
+Pixel& ImageDataStracture::operator()(unsigned int x, unsigned int y) {
+	if (this->m_height <= x || this->m_width <= y)
+		terminate("tried to access an unallocated memory");
+	return this->m_imageData[x][y];
+}
+//========================================================================
+const Pixel& ImageDataStracture::operator()(unsigned int x, unsigned int y)const {
 	if (this->m_height <= x || this->m_width <= y)
 		terminate("tried to access an unallocated memory");
 	return this->m_imageData[x][y];
