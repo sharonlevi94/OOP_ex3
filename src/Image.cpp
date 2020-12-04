@@ -85,7 +85,14 @@ void Image::operator&=(const Image& other) {
 }
 //========================================================================
 void Image::operator=(const Image& other) {
-	
+	if (this->getHight() == other.getHight() &&
+		this->getWidth() == other.getWidth() &&
+		*this != other) {
+		this->~Image(); //realse memory
+		for (int i = 0; i < other.getHight(); i++)
+			for (int j = 0; j < other.getWidth(); j++)
+				this->m_imageData(i, j) = other(i, j);
+	}
 }
 //========================================================================
 Image operator+(const Image& A, const Image& B) {
