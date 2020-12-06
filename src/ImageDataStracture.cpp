@@ -7,19 +7,20 @@ ImageDataStracture::ImageDataStracture(unsigned int height,
 	unsigned int width, unsigned char color): m_height(height), m_width(width),
 	m_imageData(nullptr){
 	this->m_imageData = nullptr;
-	
-	this->m_imageData = new(std::nothrow) Pixel*[height];
-	if (this->m_imageData == nullptr)
-		terminate("Memory allocation error!");
-	
-	for (unsigned int i = 0; i < height; ++i) {
-		this->m_imageData[i] = nullptr;
-
-		this->m_imageData[i] = new(std::nothrow) Pixel[width];
-		if (this->m_imageData[i] == nullptr)
+	if (height != 0 && width != 0) {
+		this->m_imageData = new(std::nothrow) Pixel * [height];
+		if (this->m_imageData == nullptr)
 			terminate("Memory allocation error!");
-		for (unsigned int j = 0; j < width; ++j)
-			this->m_imageData[i][j] = Pixel(color);
+
+		for (unsigned int i = 0; i < height; ++i) {
+			this->m_imageData[i] = nullptr;
+
+			this->m_imageData[i] = new(std::nothrow) Pixel[width];
+			if (this->m_imageData[i] == nullptr)
+				terminate("Memory allocation error!");
+			for (unsigned int j = 0; j < width; ++j)
+				this->m_imageData[i][j] = Pixel(color);
+		}
 	}
 }
 ImageDataStracture::~ImageDataStracture() {

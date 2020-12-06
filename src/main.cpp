@@ -5,9 +5,7 @@
 
 int main()
 {
-	Image image1 = Image(5, 5, BLACK),
-		image2 = Image(10,10, GRAY),
-		image3 = image1 + image2;
-	std::cout << image3;
+	Image image1 = Image(2, 2, WHITE);
+	std::cout << (~image1 + Image(4, 4 , GRAY)) * 3;
 	return EXIT_SUCCESS;
 }

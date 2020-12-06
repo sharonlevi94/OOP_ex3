@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cmath>
 //========================================================================
-Image::Image() :m_imageData(ImageDataStracture(0, 0)) {}
+Image::Image():m_imageData(ImageDataStracture(0, 0, WHITE)) {}
 //========================================================================
 Image::Image(int height, int width) : 
 	m_imageData(ImageDataStracture(height, width, WHITE)){}
@@ -44,7 +44,7 @@ Pixel& Image::operator()(unsigned int x, unsigned int y) {
 }
 //========================================================================
 const Pixel& Image::operator()(unsigned int x, unsigned int y)const {
-	return this->m_imageData(x, y);
+	return this->m_imageData(x,y);
 }
 //========================================================================
 std::ostream& operator<<(std::ostream& os, const Image& A) {
@@ -84,10 +84,11 @@ Image operator~(const Image& A) {
 				newImage(i, j) = BLACK;
 				break;
 			}
-			default: break;
+			default: 
+				break;
 			}
 		}
-			return newImage;
+	return newImage;
 }
 //========================================================================
 void operator+=(Image& A, const Image& B) {
@@ -113,14 +114,19 @@ Image operator|(const Image& A, const Image& B) {
 	unsigned int nWidth = (unsigned int)fmax(A.getWidth() , B.getWidth());
 	Image nImage(nHeight, nWidth);
 
-	for (unsigned int i = 0; i < A.getHeight(); i++)
-		for (unsigned int j = 0; j < A.getWidth(); j++)
-			nImage(i, j) |= A(i, j);
-
-	for (unsigned int i = 0; i < B.getHeight(); i++)
-		for (unsigned int j = 0; j < B.getWidth(); j++)
-			nImage(i, j) |= B(i, j);
-
+	for(unsigned int i = 0; i < nHeight; ++i)
+		for (unsigned int j; j < nWidth; ++j) {
+			if (A.getHeight() > i && A.getWidth() > j) {
+				if (B.getHeight() > i && B.getWidth() > j)
+					nImage(i, j) = A(i, j) | B(i, j);
+				else
+					nImage(i, j) = A(i, j);
+			}
+			else if (B.getHeight() > i && B.getWidth() > j)
+				nImage(i, j) = B(i, j);
+			else
+				nImage(i, j) = Pixel(WHITE);
+		}
 	return nImage;
 }
 //========================================================================
@@ -129,36 +135,21 @@ Image operator&(const Image& A, const Image& B) {
 	unsigned int nWidth = (unsigned int)fmin(A.getWidth(), B.getWidth());
 	Image nImage(nHeight, nWidth);
 
-	for (unsigned int i = 0; i < A.getHeight(); i++)
-		for (unsigned int j = 0; j < A.getWidth(); j++)
-			nImage(i, j) &= A(i, j);
-
-	for (unsigned int i = 0; i < B.getHeight(); i++)
-		for (unsigned int j = 0; j < B.getWidth(); j++)
-			nImage(i, j) &= B(i, j);
+	for (unsigned int i = 0; i < nHeight; ++i)
+		for (unsigned int j = 0; j < nWidth; ++j)
+			nImage(i, j) = A(i, j) & B(i, j);
 
 	return nImage;
 }
 //========================================================================
 Image operator*(const Image& A, unsigned int n) {
-	if (n == 0) {
-		return Image();
-	}
-	Image nImage(A.getHeight(), A.getWidth() * n);
+	Image nImage = Image();
 	for (unsigned int i = 0; i < n; i++)
 		nImage += A;
 	return nImage;
 }
 //========================================================================
-Image operator*(unsigned int n, const Image& A) {
-	if (n == 0) {
-		return Image();
-	}
-	Image nImage(A.getHeight(), A.getWidth() * n);
-	for (unsigned int i = 0; i < n; i++)
-		nImage += A;
-	return nImage;
-}
+Image operator*(unsigned int n, const Image& A) {return (A * n);}
 //========================================================================
 void operator*=(Image& A, unsigned int n) {
 	A = A * n;
