@@ -88,6 +88,7 @@ Image operator~(const Image& A) {
 				break;
 			}
 			default: 
+				newImage(i, j) = GRAY;
 				break;
 			}
 		}
