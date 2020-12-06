@@ -6,12 +6,15 @@ public:
 	ImageDataStracture(unsigned int height = 0, unsigned int width = 0,
 		unsigned char color = WHITE);
 	~ImageDataStracture();
-
+	//========================== gets section ================================
+	
 	unsigned int getHeight()const;
 	unsigned int getWidth()const;
-	void operator=(const ImageDataStracture& source);
+	//======================= operators section ==============================
+
 	Pixel& operator()(unsigned int x, unsigned int y);
 	const Pixel& operator()(unsigned int x, unsigned int y)const;
+	void operator=(const ImageDataStracture& source);
 
 private:
 	Pixel** m_imageData;

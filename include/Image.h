@@ -9,11 +9,11 @@ class Image
 public:
 	Image();
 	Image(int height, int width);
-	Image(int height, int width, unsigned char pixel);
+	Image(int height = 0, int width = 0, unsigned char pixel = WHITE);
 	Image(const Image& other); //copy constructor,call to operator =
 	~Image();
 
-	unsigned int getHight()const;
+	unsigned int getHeight()const;
 	unsigned int getWidth()const;
 
 	void operator=(const Image& other); //like copy constructor but diff
